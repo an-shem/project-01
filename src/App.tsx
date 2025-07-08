@@ -6,14 +6,11 @@ import CatImg2 from './assets/cat2.jpeg';
 import Avatar from './assets/avatar.jpeg';
 import Goodbye from './components/Goodbye/Goodbye';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import Counter from './components/Counter/Counter';
+import PersonalGreeting from './components/PersonalGreeting/PersonalGreeting';
+import WeightCalculator from './components/WeightCalculator/WeightCalculator';
 
-interface UserProfile {
-  avatar: string;
-  name: string;
-  description: string;
-}
-
-const userProfile: UserProfile = {
+const userProfile = {
   avatar: Avatar,
   name: 'Andrii',
   description:
@@ -24,6 +21,10 @@ function App() {
   const name = 'Vasiliy';
   return (
     <>
+      <WeightCalculator />
+      <Counter />
+      <Counter />
+      <PersonalGreeting />
       <Greeting name={name} />
       <Greeting name={'Evgenii'} age={18} />
       <Goodbye />
