@@ -9,6 +9,7 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 import Counter from './components/Counter/Counter';
 import PersonalGreeting from './components/PersonalGreeting/PersonalGreeting';
 import WeightCalculator from './components/WeightCalculator/WeightCalculator';
+import SpaceMissionForm from './components/SpaceMissionForm/SpaceMissionForm';
 
 const userProfile = {
   avatar: Avatar,
@@ -21,6 +22,7 @@ function App() {
   const name = 'Vasiliy';
   return (
     <>
+      <SpaceMissionForm />
       <WeightCalculator />
       <Counter />
       <Counter />

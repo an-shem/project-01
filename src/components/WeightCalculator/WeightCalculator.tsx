@@ -34,9 +34,7 @@ export default function WeightCalculator() {
       </label>
 
       <select name="gender" id="" value={gender} onChange={(e) => setGender(e.target.value)}>
-        <option value="female" selected>
-          female
-        </option>
+        <option value="female">female</option>
         <option value="male">male</option>
       </select>
 
