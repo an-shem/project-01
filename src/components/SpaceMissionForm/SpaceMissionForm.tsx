@@ -1,45 +1,41 @@
-import { useState, type JSX } from 'react';
+import { useState } from 'react';
 import styles from './SpaceMissionForm.module.css';
+import Planet from './Planet';
 
-export default function SpaceMissionForm(): JSX.Element {
-  const initialValueName = '';
-  const initialValuePlanet = 'mars';
-  const initialValueMessage = 'Please enter your name to begin your mission.';
-  const [name, setName] = useState<string>(initialValueName);
-  const [planet, setPlanet] = useState<string>(initialValuePlanet);
-  const [message, setMessage] = useState<string>(initialValueMessage);
+const SpaceMissionForm = () => {
+  const [fullName, setFullName] = useState<string | undefined>(undefined);
+  // enum Planet {
+  //   Mars = 'Mars',
+  //   Venus = 'Venus',
+  //   Jupiter = 'Jupiter',
+  //   Saturn = 'Saturn',
+  // }
 
-  function handleRegister(): void {
-    if (name.length === 0) {
-      setMessage(initialValueMessage);
-      return;
-    }
-    setMessage(`Astronaut ${name} is headed to ${planet.replace(planet[0], planet[0].toUpperCase())}!`);
-    setName(initialValueName);
-    setPlanet(initialValuePlanet);
-  }
+  const [planet, setPlanet] = useState<string>(Planet.MARS);
 
   return (
-    <div className={styles.registerFormWrapper}>
-      <form action="" className={styles.registerForm}>
-        <label htmlFor="name-id">
-          Name:
-          <input type="text" id="name-id" value={name} onChange={(e) => setName(e.target.value.trim())} />
-        </label>
-        <label htmlFor="planets-id">
-          Planets:
-          <select name="planets" id="planets-id" value={planet} onChange={(e) => setPlanet(e.target.value)}>
-            <option value="mars">Mars</option>
-            <option value="venus">Venus</option>
-            <option value="jupiter">Jupiter</option>
-            <option value="saturn">Saturn</option>
-          </select>
-        </label>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-      </form>
-      <div className={styles.outputMessage}>{message}</div>
+    <div className={styles.registerWrapper}>
+      <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+      <select value={planet} onChange={(e) => setPlanet(e.target.value)}>
+        <option value={Planet.MARS}>{Planet.MARS}</option>
+        <option value={Planet.VENUS}>{Planet.VENUS}</option>
+        <option value={Planet.JUPITER}>{Planet.JUPITER}</option>
+        <option value={Planet.SATURN}>{Planet.SATURN}</option>
+      </select>
+      {/* <p>
+        {fullName
+          ? `🧑‍🚀 Astronaut ${fullName} is headed to ${planet}!`
+          : 'Please enter your name to begin your mission.'}
+      </p> */}
+      {fullName ? (
+        <p>
+          🧑‍🚀 Astronaut {fullName} is headed to {planet}!
+        </p>
+      ) : (
+        <p>Please enter your name to begin your mission.</p>
+      )}
     </div>
   );
-}
+};
+
+export default SpaceMissionForm;
