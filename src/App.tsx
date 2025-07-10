@@ -12,6 +12,7 @@ import WeightCalculator from './components/WeightCalculator/WeightCalculator';
 import SpaceMissionForm from './components/SpaceMissionForm/SpaceMissionForm';
 import Demo from './components/Demo';
 import AgePredictor from './components/AgePredictor/AgePredictor';
+import { GenderDeterminativeByName } from './components/GenderDeterminativeByName/GenderDeterminativeByName';
 
 const userProfile = {
   avatar: Avatar,
@@ -24,6 +25,7 @@ function App() {
   const name = 'Vasiliy';
   return (
     <>
+      <GenderDeterminativeByName />
       <AgePredictor />
       <Demo />
       <SpaceMissionForm />
