@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+## To start application
+
+To start application add env varibles to .env file.

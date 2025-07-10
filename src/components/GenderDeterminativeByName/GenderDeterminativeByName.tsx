@@ -10,6 +10,8 @@ interface Response {
   remaining_credits: number;
 }
 
+const key = import.meta.env.VITE_GENDER_API_KEY;
+
 export const GenderDeterminativeByName = () => {
   const initErrMsgValue: string = 'Enter your name to search';
   const [name, setName] = useState<string>('');
@@ -20,7 +22,7 @@ export const GenderDeterminativeByName = () => {
     try {
       const verifiedName = isValidName(name);
 
-      const res = await fetch(`https://api.genderapi.io/api/?name=${verifiedName}`);
+      const res = await fetch(`https://api.genderapi.io/api/?key=${key}&name=${verifiedName}`);
       const data = await res.json();
 
       if (!res.ok) {
