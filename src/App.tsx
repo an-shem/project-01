@@ -13,6 +13,7 @@ import BuyPony from './components/BuyPony/BuyPony';
 import { ROUTES } from './consttants/routes';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
+import AccoumtLoyaut from './layout/AccoumtLoyaut';
 
 function App() {
   return (
@@ -29,8 +30,12 @@ function App() {
             <Route path="/counter" element={<Counter />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/pony" element={<PonyLayout />}>
-              <Route path="/pony/my-pony" element={<MyPony />} />
-              <Route path="/pony/buy-pony" element={<BuyPony />} />
+              <Route path="my-pony" element={<MyPony />} />
+              <Route path="buy-pony" element={<BuyPony />} />
+            </Route>
+            <Route path="account" element={<AccoumtLoyaut />}>
+              <Route />
+              <Route />
             </Route>
           </Route>
         </Routes>

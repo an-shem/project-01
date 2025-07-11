@@ -13,6 +13,7 @@ export default function NavBar() {
         <Link to="/age-predictor">Age Predictor</Link>
         <Link to="/counter">Counter</Link>
         <Link to="/pony">Pony</Link>
+        <Link to="/account">Account</Link>
       </nav>
     </>
   );
