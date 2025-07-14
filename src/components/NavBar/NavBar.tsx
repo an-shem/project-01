@@ -21,6 +21,9 @@ export default function NavBar() {
         <NavLink to="/products" className={classSelector}>
           Products
         </NavLink>
+        <NavLink to="/users" className={classSelector}>
+          Users
+        </NavLink>
         <NavLink to={ROUTES.REGISTRATION} className={classSelector}>
           Register
         </NavLink>
