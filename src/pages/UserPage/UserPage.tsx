@@ -22,7 +22,16 @@ export default function UserPage() {
       <br />
       <li>
         <h3>{user?.name}</h3>
-        <img src={user?.avatar} alt="user" />
+        <img
+          src={user?.avatar}
+          alt="avatar"
+          width={'200px'}
+          onError={(e) =>
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            (e.target.src = '/user-default-avatar.jpg')
+          }
+        />
         <p>{user?.email}</p>
         <p>{user?.role}</p>
       </li>

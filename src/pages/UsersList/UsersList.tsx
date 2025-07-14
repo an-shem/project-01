@@ -22,7 +22,16 @@ export default function UsersList() {
         {users.map((u) => (
           <li key={'user ' + u.id}>
             <h3>{u.name}</h3>
-            <img src={u.avatar} alt="user" />
+            <img
+              src={u.avatar}
+              alt="avatar"
+              width={'200px'}
+              onError={(e) =>
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                (e.target.src = '/user-default-avatar.jpg')
+              }
+            />
             <p>{u.email}</p>
             <p>{u.role}</p>
             <Link to={`/users/${u.id}`}>To user</Link>
