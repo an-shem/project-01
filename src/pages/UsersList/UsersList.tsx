@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import type { User } from '../../types';
-import { unstable_batchedUpdates } from 'react-dom';
 import { Link } from 'react-router-dom';
 
 export default function UsersList() {
