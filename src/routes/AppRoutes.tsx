@@ -17,9 +17,9 @@ import AccountInfo from '../components/AccountInfo/AccountInfo';
 import AccountSettings from '../components/AccountSettings/AccountSettings';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import ProductPage from '../pages/ProductPage/ProductPage';
-import UsersList from '../components/UsersList/UsersList';
 import UserPage from '../pages/UserPage/UserPage';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
+import Login from '../pages/Login/Login';
 
 export default function AppRoutes() {
   return (
@@ -34,6 +34,7 @@ export default function AppRoutes() {
           <Route path={ROUTES.USERS} element={<UsersPage />} />
           <Route path={ROUTES.USERS + '/:id'} element={<UserPage />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.GENDER_PREDICTOR} element={<GenderDeterminativeByName />} />
           <Route path="/age-predictor" element={<AgePredictor />} />
           <Route path="/counter" element={<Counter />} />

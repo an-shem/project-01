@@ -25,7 +25,10 @@ export default function NavBar() {
           Users
         </NavLink>
         <NavLink to={ROUTES.REGISTRATION} className={classSelector}>
-          Register
+          Sign Up
+        </NavLink>
+        <NavLink to={ROUTES.LOGIN} className={classSelector}>
+          Sign In
         </NavLink>
         <NavLink to={ROUTES.GENDER_PREDICTOR} className={classSelector}>
           Gender Predictor
