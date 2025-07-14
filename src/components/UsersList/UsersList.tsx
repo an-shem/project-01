@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react';
-import type { User } from '../../types';
 import { Link } from 'react-router-dom';
+import useUsers from '../../hooks/useUsers';
 
 export default function UsersList() {
-  const [users, setUsers] = useState<User[]>([]);
+  //custom hook
+  const { users, loading, error } = useUsers();
 
-  async function fetchUsers() {
-    const res = await fetch('https://api.escuelajs.co/api/v1/users');
-    const usersList = await res.json();
-    setUsers(usersList);
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
