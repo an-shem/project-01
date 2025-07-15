@@ -22,7 +22,6 @@ import { UsersPage } from '../pages/UsersPage/UsersPage';
 import Login from '../pages/Login/Login';
 import CreateProduct from '../pages/CreateProduct/CreateProduct';
 
-
 export default function AppRoutes() {
   return (
     <>
@@ -33,7 +32,7 @@ export default function AppRoutes() {
           <Route path={ROUTES.CONTACT} element={<Contact />} />
           <Route path="/products" element={<ProductsList />} />
           <Route path="/products/:id" element={<ProductPage />} />
-          <Route path="/products/add" element={<AddProduct />} />
+          <Route path="/products/add" element={<CreateProduct />} />
           <Route path={ROUTES.USERS} element={<UsersPage />} />
           <Route path={ROUTES.USERS + '/:id'} element={<UserPage />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
