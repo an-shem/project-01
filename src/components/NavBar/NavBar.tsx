@@ -18,8 +18,11 @@ export default function NavBar() {
         <NavLink to={ROUTES.CONTACT} className={classSelector}>
           Contact
         </NavLink>
-        <NavLink to="/products" className={classSelector}>
+        <NavLink to="/products" className={classSelector} end>
           Products
+        </NavLink>
+        <NavLink to="/products/add" className={classSelector}>
+          Add Product
         </NavLink>
         <NavLink to="/users" className={classSelector}>
           Users
