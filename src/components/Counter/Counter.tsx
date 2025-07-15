@@ -1,22 +1,24 @@
-import { useState } from 'react';
 import styles from './Counter.module.css';
+import { useCounter } from '../../hooks/useCounter';
 
 export default function Counter() {
-  const initialValue = 0;
-  const [counter, setConter] = useState<number>(initialValue);
+  const { counter, setConter } = useCounter();
+  // const initialValue = 0;
+  // const [counter, setConter] = useState<number>(initialValue);
   //tuple
   //state, local state - состояние
   //setter function - функция сеттер
   function handlePlus() {
-    // setConter(counter + 1);
-    setConter((prev) => prev + 1);
+    setConter(counter + 1);
+    // setConter((prev: number) => prev + 1);
     console.log(counter);
   }
   function handleMinus() {
-    setConter((prev) => prev - 1);
+    setConter(counter - 1);
+    // setConter((prev: number) => prev - 1);
   }
   function handleReset() {
-    setConter(initialValue);
+    setConter(0);
   }
 
   return (

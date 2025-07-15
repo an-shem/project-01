@@ -2,12 +2,14 @@ import { ROUTES } from '../../constants/routes';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { useCounter } from '../../hooks/useCounter';
 
 export default function NavBar() {
   const classSelector = ({ isActive }: { isActive: boolean }) => {
     return isActive ? styles.navLinkActive : styles.navLink;
   };
   const { user } = useCurrentUser();
+  const { counter } = useCounter();
   return (
     <>
       <nav className={styles.navBar}>
@@ -50,7 +52,8 @@ export default function NavBar() {
         <NavLink to="/pony" className={classSelector}>
           Pony
         </NavLink>
-        {user?.email}
+        {user ? <div>{user.email}</div> : null}
+        <div>Counter: {counter}</div>
       </nav>
     </>
   );
