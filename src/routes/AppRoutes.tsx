@@ -20,6 +20,7 @@ import ProductPage from '../pages/ProductPage/ProductPage';
 import UserPage from '../pages/UserPage/UserPage';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
 import Login from '../pages/Login/Login';
+import CreateProduct from '../pages/CreateProduct/CreateProduct';
 
 export default function AppRoutes() {
   return (
@@ -46,6 +47,7 @@ export default function AppRoutes() {
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<AccountSettings />} />
             <Route path={ROUTES.ACCOUNT_INFO} element={<AccountInfo />} />
           </Route>
+          <Route path="/product/add" element={<CreateProduct />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

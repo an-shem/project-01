@@ -19,7 +19,7 @@ export default function ProductPage() {
   return (
     <div>
       <h3>{product?.title}</h3>
-      <img src={product?.images[0]} alt="product" />
+      <img src={product?.images[0]} alt="product" style={{ width: '500px' }} />
       <span>{product?.price}$</span>
     </div>
   );
