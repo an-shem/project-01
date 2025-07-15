@@ -1,11 +1,13 @@
 import { ROUTES } from '../../constants/routes';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 export default function NavBar() {
   const classSelector = ({ isActive }: { isActive: boolean }) => {
     return isActive ? styles.navLinkActive : styles.navLink;
   };
+  const { user } = useCurrentUser();
   return (
     <>
       <nav className={styles.navBar}>
@@ -26,6 +28,9 @@ export default function NavBar() {
         </NavLink>
         <NavLink to="/users" className={classSelector}>
           Users
+        </NavLink>
+        <NavLink to="/product/add" className={classSelector}>
+          Creaete Product
         </NavLink>
         <NavLink to={ROUTES.REGISTRATION} className={classSelector}>
           Sign Up
@@ -48,6 +53,7 @@ export default function NavBar() {
         <NavLink to={ROUTES.ACCOUNT} className={classSelector}>
           Account
         </NavLink>
+        {user?.email}
       </nav>
     </>
   );
