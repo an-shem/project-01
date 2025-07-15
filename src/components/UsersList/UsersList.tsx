@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
-import type { User } from '../../types';
 import { Link } from 'react-router-dom';
+import useUsers from '../../hooks/useUsers';
 
 export default function UsersList() {
-  const [users, setUsers] = useState<User[]>([]);
+  //custom hook
+  const { users, loading, error } = useUsers();
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  async function fetchUsers() {
-    const res = await fetch('https://api.escuelajs.co/api/v1/users');
-    const usersRes = await res.json();
-    setUsers(usersRes);
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
@@ -20,8 +18,7 @@ export default function UsersList() {
       <h2>UsersList</h2>
       <ul>
         {users.map((u) => (
-          <li key={'user ' + u.id}>
-            <h3>{u.name}</h3>
+          <li key={u.id}>
             <img
               src={u.avatar}
               alt="avatar"
@@ -32,9 +29,9 @@ export default function UsersList() {
                 (e.target.src = '/user-default-avatar.jpg')
               }
             />
+            <Link to={`/users/${u.id}`}>{u.name}</Link>
             <p>{u.email}</p>
             <p>{u.role}</p>
-            <Link to={`/users/${u.id}`}>To user</Link>
           </li>
         ))}
       </ul>

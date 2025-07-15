@@ -1,71 +1,72 @@
 import { Formik, Form, Field } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 const SignupSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
     .required('Required')
     .min(8, 'Too Short!')
     .matches(/[A-Z]/, 'Minimum one capital letter')
     .matches(/[0-9]/, 'Minimum one digit')
     .max(50, 'Too Long!'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  avatar: Yup.string().min(2, 'Too Short!').max(250, 'Too Long!').required('Required'),
 });
 
 interface Credentials {
-  name: string;
   email: string;
   password: string;
-  avatar: string;
 }
 
-const Registration = () => {
+const Login = () => {
   const [message, setMessage] = useState('');
+  const { setUser } = useCurrentUser();
 
-  async function fetchRegister(credentials: Credentials) {
-    const res = await fetch('https://api.escuelajs.co/api/v1/users', {
+  async function fetchLogin(credentials: Credentials) {
+    const res = await fetch('https://api.escuelajs.co/api/v1/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/JSON' },
       body: JSON.stringify(credentials),
     });
 
     if (res.ok) {
-      setMessage('Successfully registered');
+      setMessage('Successfully signet in');
+
+      const { access_token } = await res.json();
+      fetchUser(access_token);
     }
+  }
+
+  async function fetchUser(access_token: string) {
+    const res = await fetch('https://api.escuelajs.co/api/v1/auth/profile', {
+      headers: { Authorization: ` Bearer ${access_token}` },
+    });
+    const obj = await res.json();
+    setUser(obj);
   }
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>Signin</h1>
       {message ? <div>{message}</div> : null}
       <Formik
         initialValues={{
-          name: '',
           password: '',
           email: '',
-          avatar: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          fetchRegister(values);
+          fetchLogin(values);
         }}
       >
         {({ errors, touched }) => (
           <Form>
-            <label>Name:</label>
-            <Field name="name" />
-            {errors.name && touched.name ? <div>{errors.name}</div> : null}
-            <label>Password:</label>
-            <Field name="password" type="password" />
-            {errors.password && touched.password ? <div>{errors.password}</div> : null}
             <label>Email:</label>
             <Field name="email" type="email" />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <label>Avatar:</label>
-            <Field name="avatar" />
-            {errors.avatar && touched.avatar ? <div>{errors.avatar}</div> : null}
+            <label>Password:</label>
+            <Field name="password" type="password" />
+            {errors.password && touched.password ? <div>{errors.password}</div> : null}
             <button type="submit">Submit</button>
           </Form>
         )}
@@ -74,4 +75,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;

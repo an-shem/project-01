@@ -17,8 +17,10 @@ import AccountInfo from '../components/AccountInfo/AccountInfo';
 import AccountSettings from '../components/AccountSettings/AccountSettings';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import ProductPage from '../pages/ProductPage/ProductPage';
-import UsersList from '../pages/UsersList/UsersList';
 import UserPage from '../pages/UserPage/UserPage';
+import { UsersPage } from '../pages/UsersPage/UsersPage';
+import Login from '../pages/Login/Login';
+import CreateProduct from '../pages/CreateProduct/CreateProduct';
 
 export default function AppRoutes() {
   return (
@@ -30,9 +32,11 @@ export default function AppRoutes() {
           <Route path={ROUTES.CONTACT} element={<Contact />} />
           <Route path="/products" element={<ProductsList />} />
           <Route path="/products/:id" element={<ProductPage />} />
-          <Route path="/users" element={<UsersList />} />
-          <Route path="/users/:id" element={<UserPage />} />
+          <Route path="/products/add" element={<CreateProduct />} />
+          <Route path={ROUTES.USERS} element={<UsersPage />} />
+          <Route path={ROUTES.USERS + '/:id'} element={<UserPage />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.GENDER_PREDICTOR} element={<GenderDeterminativeByName />} />
           <Route path="/age-predictor" element={<AgePredictor />} />
           <Route path="/counter" element={<Counter />} />
@@ -44,6 +48,7 @@ export default function AppRoutes() {
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<AccountSettings />} />
             <Route path={ROUTES.ACCOUNT_INFO} element={<AccountInfo />} />
           </Route>
+          <Route path="/product/add" element={<CreateProduct />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
