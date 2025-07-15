@@ -24,13 +24,10 @@ export default function NavBar() {
           Products
         </NavLink>
         <NavLink to="/products/add" className={classSelector}>
-          Add Product
+          Creaete Product
         </NavLink>
         <NavLink to="/users" className={classSelector}>
           Users
-        </NavLink>
-        <NavLink to="/product/add" className={classSelector}>
-          Creaete Product
         </NavLink>
         <NavLink to={ROUTES.REGISTRATION} className={classSelector}>
           Sign Up
@@ -38,20 +35,20 @@ export default function NavBar() {
         <NavLink to={ROUTES.LOGIN} className={classSelector}>
           Sign In
         </NavLink>
+        <NavLink to={ROUTES.ACCOUNT} className={classSelector}>
+          Account
+        </NavLink>
+        <NavLink to="/counter" className={classSelector}>
+          Counter
+        </NavLink>
         <NavLink to={ROUTES.GENDER_PREDICTOR} className={classSelector}>
           Gender Predictor
         </NavLink>
         <NavLink to="/age-predictor" className={classSelector}>
           Age Predictor
         </NavLink>
-        <NavLink to="/counter" className={classSelector}>
-          Counter
-        </NavLink>
         <NavLink to="/pony" className={classSelector}>
           Pony
-        </NavLink>
-        <NavLink to={ROUTES.ACCOUNT} className={classSelector}>
-          Account
         </NavLink>
         {user?.email}
       </nav>
