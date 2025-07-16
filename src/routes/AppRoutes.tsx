@@ -21,6 +21,7 @@ import UserPage from '../pages/UserPage/UserPage';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
 import Login from '../pages/Login/Login';
 import CreateProduct from '../pages/CreateProduct/CreateProduct';
+import Galery from '../components/Galery/Galery';
 
 export default function AppRoutes() {
   return (
@@ -48,7 +49,7 @@ export default function AppRoutes() {
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<AccountSettings />} />
             <Route path={ROUTES.ACCOUNT_INFO} element={<AccountInfo />} />
           </Route>
-          <Route path="/product/add" element={<CreateProduct />} />
+          <Route path={'/galery'} element={<Galery />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

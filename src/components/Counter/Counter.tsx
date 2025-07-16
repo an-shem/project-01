@@ -2,35 +2,23 @@ import styles from './Counter.module.css';
 import { useCounter } from '../../hooks/useCounter';
 
 export default function Counter() {
-  const { counter, setConter } = useCounter();
+  const { counter, increment, decrement, reset } = useCounter(10);
   // const initialValue = 0;
   // const [counter, setConter] = useState<number>(initialValue);
   //tuple
   //state, local state - состояние
   //setter function - функция сеттер
-  function handlePlus() {
-    setConter(counter + 1);
-    // setConter((prev: number) => prev + 1);
-    console.log(counter);
-  }
-  function handleMinus() {
-    setConter(counter - 1);
-    // setConter((prev: number) => prev - 1);
-  }
-  function handleReset() {
-    setConter(0);
-  }
 
   return (
     <div className={styles.counterCard}>
       <h2>Counter: {counter}</h2>
-      <button type="button" className={styles.counterBtn} onClick={handleMinus}>
+      <button type="button" className={styles.counterBtn} onClick={decrement}>
         -1
       </button>
-      <button type="button" className={styles.counterBtn} onClick={handlePlus}>
+      <button type="button" className={styles.counterBtn} onClick={increment}>
         +1
       </button>
-      <button type="button" className={styles.counterBtn} onClick={handleReset}>
+      <button type="button" className={styles.counterBtn} onClick={reset}>
         reset
       </button>
     </div>

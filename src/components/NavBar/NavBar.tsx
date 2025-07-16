@@ -8,11 +8,16 @@ export default function NavBar() {
   const classSelector = ({ isActive }: { isActive: boolean }) => {
     return isActive ? styles.navLinkActive : styles.navLink;
   };
-  const { user } = useCurrentUser();
+  const { user, setIsAuthorized, isAuthorized } = useCurrentUser();
   const { counter } = useCounter();
+
+  function handleLogout() {
+    setIsAuthorized(false);
+  }
+
   return (
     <>
-      <nav className={styles.navBar}>
+      <nav className="flex flex-wrap justify-center items-center gap-4 min-h-14 p-6  bg-pink-200 ">
         <NavLink to="/" className={classSelector}>
           Home
         </NavLink>
@@ -52,8 +57,17 @@ export default function NavBar() {
         <NavLink to="/pony" className={classSelector}>
           Pony
         </NavLink>
+        <NavLink to={'/galery'} className={classSelector}>
+          Galery
+        </NavLink>
         {user ? <div>{user.email}</div> : null}
         <div>Counter: {counter}</div>
+
+        {isAuthorized ? (
+          <button type="button" onClick={handleLogout}>
+            Logout
+          </button>
+        ) : null}
       </nav>
     </>
   );
