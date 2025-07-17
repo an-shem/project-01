@@ -23,6 +23,7 @@ import CreateProduct from '../pages/CreateProduct/CreateProduct';
 import Galery from '../components/Galery/Galery';
 import ToggleCardPage from '../pages/ToggleCardPage/ToggleCardPage';
 import ProductsPage from '../pages/ProductsPage/ProductsPage';
+import { Parent } from '../components/Parent/Parent';
 
 export default function AppRoutes() {
   return (
@@ -52,6 +53,7 @@ export default function AppRoutes() {
           </Route>
           <Route path={ROUTES.GALERY} element={<Galery />} />
           <Route path={ROUTES.TOGGLE_CARD} element={<ToggleCardPage />} />
+          <Route path={'/parent'} element={<Parent />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

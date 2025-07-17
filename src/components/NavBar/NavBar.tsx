@@ -63,6 +63,9 @@ export default function NavBar() {
         <NavLink to={ROUTES.TOGGLE_CARD} className={classSelector}>
           Toggle Card
         </NavLink>
+        <NavLink to={'/parent'} className={classSelector}>
+          Parent
+        </NavLink>
         {user ? <div className="text-xl text-blue-400">{user.email}</div> : null}
         <div className="min-w-24 text-xl text-blue-400">Counter: {counter}</div>
 

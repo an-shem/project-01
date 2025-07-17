@@ -7,10 +7,10 @@ const ToggleCard = () => {
   return (
     <div className="flex flex-col gap-5 items-center justify-center">
       <div
-        className={cn('h-24 w-48 rounded-xl shadow-lg flex items-center justify-center text-xl text-amber-50', {
-          'bg-blue-400': isBlue,
-          ' bg-yellow-300': !isBlue,
-        })}
+        className={cn(
+          'h-24 w-48 rounded-xl shadow-lg flex items-center justify-center text-xl text-amber-50',
+          isBlue ? 'bg-blue-400' : ' bg-yellow-300'
+        )}
       >
         ToggleCard
       </div>
