@@ -1,13 +1,13 @@
 import { ROUTES } from '../../constants/routes';
 import { NavLink } from 'react-router-dom';
-import styles from './NavBar.module.css';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { useCounter } from '../../hooks/useCounter';
+import { cn } from 'clsx-for-tailwind';
 
 export default function NavBar() {
-  const classSelector = ({ isActive }: { isActive: boolean }) => {
-    return isActive ? styles.navLinkActive : styles.navLink;
-  };
+  const classSelector = ({ isActive }: { isActive: boolean }) =>
+    cn('hover:text-gray-400', { 'text-amber-500 underline': isActive });
+
   const { user, setIsAuthorized, isAuthorized } = useCurrentUser();
   const { counter } = useCounter();
 
@@ -17,7 +17,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="flex flex-wrap justify-center items-center gap-4 min-h-14 p-6  bg-pink-200 ">
+      <nav className="flex flex-wrap justify-center items-center gap-5 min-h-20 py-5 px-10 bg-cyan-800 text-cyan-50 font-[Bebas_Neue] font-normal text-2xl">
         <NavLink to="/" className={classSelector}>
           Home
         </NavLink>
@@ -60,8 +60,11 @@ export default function NavBar() {
         <NavLink to={'/galery'} className={classSelector}>
           Galery
         </NavLink>
-        {user ? <div>{user.email}</div> : null}
-        <div>Counter: {counter}</div>
+        <NavLink to={ROUTES.TOGGLE_CARD} className={classSelector}>
+          Toggle Card
+        </NavLink>
+        {user ? <div className="text-xl text-blue-400">{user.email}</div> : null}
+        <div className="min-w-24 text-xl text-blue-400">Counter: {counter}</div>
 
         {isAuthorized ? (
           <button type="button" onClick={handleLogout}>

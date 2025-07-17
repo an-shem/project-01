@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styles from './GenderDeterminativeByName.module.css';
 import isValidName from './IsValidName';
+import { cn } from 'clsx-for-tailwind';
 
 interface Response {
   name: string;
@@ -42,26 +42,57 @@ export const GenderDeterminativeByName = () => {
   };
 
   return (
-    <div className={styles.genderSearch}>
-      <div className={styles.genderSearchForm}>
+    <div
+      className={
+        'flex flex-col items-center gap-5 w-[700px] p-5 mx-auto my-11 rounded-4xl border-2 border-solid border-amber-500 text-cyan-800'
+      }
+    >
+      <div className={'flex flex-col items-center gap-5'}>
         <div
-          className={styles.genderSearchErrorMsg}
-          style={{ color: errMessage === initErrMsgValue ? 'white' : 'red' }}
+          className={cn({
+            'text-blue-500': errMessage === initErrMsgValue,
+            'text-red-700': errMessage !== initErrMsgValue,
+          })}
         >
           {errMessage}
         </div>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <button type="button" onClick={() => fetchHandler(name)}>
+        <input
+          type="text"
+          value={name}
+          placeholder="Enter name"
+          onChange={(e) => setName(e.target.value)}
+          className="py-2.5 px-5 rounded-4xl border-2 border-solid border-amber-500 bg-amber-50"
+        />
+        <button
+          type="button"
+          onClick={() => fetchHandler(name)}
+          className="min-w-36 py-2.5 px-5 rounded-4xl border-2 border-solid border-amber-500 cursor-pointer bg-amber-300 hover:bg-amber-600 hover:text-amber-50 font-semibold"
+        >
           Search
         </button>
       </div>
-      <div className={styles.genderSearchOutput}>
-        <ul>
-          <li>Имя: {data?.name}</li>
-          <li>Пол: {data?.gender === 'male' ? 'мужской' : data?.gender === 'female' ? 'женский' : ''} </li>
-          <li>Страна: {data?.country}</li>
-          <li>Вероятность: {data?.probability}</li>
-          <li>Остаток запросов: {data?.remaining_credits}</li>
+      <div className={'flex flex-col items-center'}>
+        <ul className="flex flex-col items-start">
+          <li>
+            <span className="font-bold mr-5 underline">Имя: </span>
+            {data?.name}
+          </li>
+          <li>
+            <span className="font-bold mr-5 underline">Пол: </span>
+            {data?.gender === 'male' ? 'мужской' : data?.gender === 'female' ? 'женский' : ''}{' '}
+          </li>
+          <li>
+            <span className="font-bold mr-5 underline">Страна: </span>
+            {data?.country}
+          </li>
+          <li>
+            <span className="font-bold mr-5 underline">Вероятность: </span>
+            {data?.probability}
+          </li>
+          <li>
+            <span className="font-bold mr-3 underline">Остаток запросов: </span>
+            {data?.remaining_credits}
+          </li>
         </ul>
       </div>
     </div>

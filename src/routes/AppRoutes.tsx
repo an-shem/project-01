@@ -15,13 +15,14 @@ import Registration from '../pages/Registration/Registration';
 import AccountLayout from '../layout/AccountLayout';
 import AccountInfo from '../components/AccountInfo/AccountInfo';
 import AccountSettings from '../components/AccountSettings/AccountSettings';
-import { ProductsList } from '../components/ProductsList/ProductsList';
 import ProductPage from '../pages/ProductPage/ProductPage';
 import UserPage from '../pages/UserPage/UserPage';
 import { UsersPage } from '../pages/UsersPage/UsersPage';
 import Login from '../pages/Login/Login';
 import CreateProduct from '../pages/CreateProduct/CreateProduct';
 import Galery from '../components/Galery/Galery';
+import ToggleCardPage from '../pages/ToggleCardPage/ToggleCardPage';
+import ProductsPage from '../pages/ProductsPage/ProductsPage';
 
 export default function AppRoutes() {
   return (
@@ -31,16 +32,16 @@ export default function AppRoutes() {
           <Route index element={<Home />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.CONTACT} element={<Contact />} />
-          <Route path="/products" element={<ProductsList />} />
-          <Route path="/products/:id" element={<ProductPage />} />
-          <Route path="/products/add" element={<CreateProduct />} />
+          <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
+          <Route path={ROUTES.PRODUCTS + '/:id'} element={<ProductPage />} />
+          <Route path={ROUTES.PRODUCTS + '/add'} element={<CreateProduct />} />
           <Route path={ROUTES.USERS} element={<UsersPage />} />
           <Route path={ROUTES.USERS + '/:id'} element={<UserPage />} />
           <Route path={ROUTES.REGISTRATION} element={<Registration />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.GENDER_PREDICTOR} element={<GenderDeterminativeByName />} />
-          <Route path="/age-predictor" element={<AgePredictor />} />
-          <Route path="/counter" element={<Counter />} />
+          <Route path={ROUTES.AGE_PREDICTOR} element={<AgePredictor />} />
+          <Route path={ROUTES.COUNTER} element={<Counter />} />
           <Route path="/pony" element={<PonyLayout />}>
             <Route path="/pony/my-pony" element={<MyPony />} />
             <Route path="/pony/buy-pony" element={<BuyPony />} />
@@ -49,7 +50,8 @@ export default function AppRoutes() {
             <Route path={ROUTES.ACCOUNT_SETTINGS} element={<AccountSettings />} />
             <Route path={ROUTES.ACCOUNT_INFO} element={<AccountInfo />} />
           </Route>
-          <Route path={'/galery'} element={<Galery />} />
+          <Route path={ROUTES.GALERY} element={<Galery />} />
+          <Route path={ROUTES.TOGGLE_CARD} element={<ToggleCardPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

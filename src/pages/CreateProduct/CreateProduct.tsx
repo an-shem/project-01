@@ -46,13 +46,13 @@ const CreateProduct = () => {
   }
 
   return (
-    <div>
-      <h1>Add product</h1>
+    <div className="flex flex-col items-center gap-10 min-h-full p-5 bg-purple-200">
+      <h1 className="text-3xl underline text-pink-700 font-[Monoton]">Add product</h1>
       {message ? <div>{message}</div> : null}
       <Formik
         initialValues={{
           title: '',
-          price: 0,
+          price: null,
           description: '',
           category: '1',
           image: '',
@@ -71,17 +71,26 @@ const CreateProduct = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form>
-            <label>Title:</label>
-            <Field name="title" />
+          <Form className="flex flex-col gap-1.5 max-w-110 p-10 border border-solid border-pink-700 rounded-3xl text-cyan-800  text-xl bg-pink-200">
+            <label className="mt-5">Title:</label>
+            <Field name="title" class={'w-80 px-5 py-1 border border-sollid border-pink-700 rounded-2xl'} />
             {errors.title && touched.title ? <div>{errors.title}</div> : null}
-            <label>Price:</label>
-            <Field name="price" />
+            <label className="mt-5">Price:</label>
+            <Field
+              name="price"
+              placeholder="0"
+              class={'w-80 px-5 py-1 border border-sollid border-pink-700 rounded-2xl'}
+            />
             {errors.price && touched.price ? <div>{errors.price}</div> : null}
-            <label>Description:</label>
-            <Field name="description" />
+            <label className="mt-5">Description:</label>
+            <Field name="description" class={'w-80 px-5 py-1 border border-sollid border-pink-700 rounded-2xl'} />
             {errors.description && touched.description ? <div>{errors.description}</div> : null}
-            <Field as="select" name="category">
+            <label className="mt-5">Category:</label>
+            <Field
+              as="select"
+              name="category"
+              class={'w-80 px-5 py-1 border border-sollid border-pink-700 rounded-2xl'}
+            >
               {/* <option value="1">Electronics</option>
               <option value="2">Clothes</option> */}
               {categories.map((c) => (
@@ -89,10 +98,15 @@ const CreateProduct = () => {
               ))}
             </Field>
             {errors.category && touched.category ? <div>{errors.category}</div> : null}
-            <label>Image:</label>
-            <Field name="image" />
+            <label className="mt-5">Image:</label>
+            <Field name="image" class={'w-80 px-5 py-1 border border-sollid border-pink-700 rounded-2xl'} />
             {errors.image && touched.image ? <div>{errors.image}</div> : null}
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              className="w-fit px-6 py-1 mx-auto mt-5 border border-sollid border-pink-700 rounded-2xl"
+            >
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
